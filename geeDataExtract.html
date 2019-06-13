@@ -13185,7 +13185,7 @@ used to sign up for Google Earth Engine.
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">geedataextract.pullGEEvarPackage</span> <span class="k">as</span> <span class="nn">GEE</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">geedataextract.downloadData</span> <span class="k">as</span> <span class="nn">GEE</span>
 </pre></div>
 
     </div>
@@ -13240,7 +13240,7 @@ used to sign up for Google Earth Engine.
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEEtcPts in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEEtcPts in module geedataextract.downloadData:
 
 GEEtcPts(ptsFile, yr, buf, poly, username, folderOut, scalePix=30)
     Calculates tree cover % at point OR within buffer of point if buf &gt; 0 OR within polygon if poly = 1
@@ -13317,7 +13317,7 @@ aspect (radians)</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEEtopoPts in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEEtopoPts in module geedataextract.downloadData:
 
 GEEtopoPts(ptsFile, metric, buf, poly, username, folderOut, scalePix=30)
     Calculates topography metrics at point OR within buffer of point if buf &gt; 0 OR within polygon if poly = 1
@@ -13409,7 +13409,7 @@ GEEtopoPts(ptsFile, metric, buf, poly, username, folderOut, scalePix=30)
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEEsoilPts in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEEsoilPts in module geedataextract.downloadData:
 
 GEEsoilPts(ptsFile, metric, buf, poly, username, folderOut, scalePix=250)
     Calculates soil metrics at point OR within buffer of point if buf &gt; 0 OR within polygon if poly = 1
@@ -13506,7 +13506,7 @@ day: daily averages</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEEgridmetPtsAvg in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEEgridmetPtsAvg in module geedataextract.downloadData:
 
 GEEgridmetPtsAvg(ptsFile, metric, startYear, endYear, timeStep, buf, poly, username, folderOut, scalePix=4000)
     Calculates climate temporal monthly averages at point OR within buffer of point if buf &gt; 0 OR within polygon if poly = 1
@@ -13599,7 +13599,7 @@ day: daily sum</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEEgridmetPtsSum in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEEgridmetPtsSum in module geedataextract.downloadData:
 
 GEEgridmetPtsSum(ptsFile, metric, startYear, endYear, timeStep, buf, poly, username, folderOut, scalePix=4000)
     Calculates climate temporal sums and spatial averages at point OR within buffer of point if buf &gt; 0 OR within polygon if poly = 1
@@ -13697,7 +13697,7 @@ vs: Wind-speed at 10m (m/s)</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEEterraClimatePtsAvgMonth in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEEterraClimatePtsAvgMonth in module geedataextract.downloadData:
 
 GEEterraClimatePtsAvgMonth(ptsFile, metric, startYear, endYear, buf, poly, username, folderOut, scalePix=4000)
     Calculates global climate temporal monthly averages at point OR within buffer of point if buf &gt; 0 OR within polygon if poly = 1
@@ -13797,7 +13797,7 @@ vpdmax: "Monthly average of daily maximum vapor pressure deficit" (hPa)</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEEprismPtsAvgMonth in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEEprismPtsAvgMonth in module geedataextract.downloadData:
 
 GEEprismPtsAvgMonth(ptsFile, metric, startYear, endYear, buf, poly, username, folderOut, scalePix=4000)
     Calculates PRISM climate temporal monthly averages at point OR within buffer of point if buf &gt; 0 OR within polygon if poly = 1
@@ -13902,9 +13902,9 @@ GEEprismPtsAvgMonth(ptsFile, metric, startYear, endYear, buf, poly, username, fo
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEEsmos in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEEsmos in module geedataextract.downloadData:
 
-GEEsmos(ptsFile, metric, timeStep, buf, poly, username, folderOut, scalePix=25000)
+GEEsmos(ptsFile, metric, timeStep, buf, poly, username, folderOut, scalePix=25000, startYear=None, endYear=None)
     Calculates soil moisture at point OR mean within buffer of point if buf &gt; 0 OR mean within polygon if poly = 1
     
     Requires:
@@ -13917,7 +13917,7 @@ GEEsmos(ptsFile, metric, timeStep, buf, poly, username, folderOut, scalePix=2500
         &#39;smp&#39; = Soil moisture profile (fraction, 0-1)
     
     timeStep - time step for temporal averaging, either &#39;lowest&#39;,&#39;month&#39;, OR &#39;year&#39;
-        
+    
     buf - specifies the radius of the buffer (meters) to add around each point. For no buffer, use buf = 0. 
     
     poly - If your ptsfile contains polygons, then specify poly = 1; otherwise use poly = 0.
@@ -13929,6 +13929,12 @@ GEEsmos(ptsFile, metric, timeStep, buf, poly, username, folderOut, scalePix=2500
     Optional parameters    
     
     scalePix - scale/spatial resolution. Default: 25000
+    
+    startYear - The start of the time-series (year)
+    
+    endYear - The end of the time-series (year)
+    
+    If you don&#39;t specify the startYear and endYear the default is to download the entire time-series
 
 </pre>
 </div>
@@ -13993,7 +13999,7 @@ L8: Landsat 8 images taken from Apr 11, 2013 to present</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEEviLandsat in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEEviLandsat in module geedataextract.downloadData:
 
 GEEviLandsat(ptsFile, metric, timeStep, sensor, buf, poly, username, folderOut, scalePix=30)
     Calculates vegetation/water indices for Landsat at point OR mean within buffer of point if buf &gt; 0 OR mean within polygon if poly = 1
@@ -14084,7 +14090,7 @@ GreenMin: Days since Jan 1, 2000 that correspond to vegetation dormancy</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEEphenMODIS in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEEphenMODIS in module geedataextract.downloadData:
 
 GEEphenMODIS(ptsFile, metric, startYear, endYear, buf, poly, username, folderOut, scalePix=500)
     Calculates phenology metric at point OR mean within buffer of point if buf &gt; 0 OR mean within polygon if poly = 1
@@ -14173,9 +14179,9 @@ Lai: 'One-sided green leaf area per unit ground area'</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEElaiMODIS in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEElaiMODIS in module geedataextract.downloadData:
 
-GEElaiMODIS(ptsFile, metric, timeStep, buf, poly, QC, username, folderOut, scalePix=500)
+GEElaiMODIS(ptsFile, metric, timeStep, buf, poly, QC, username, folderOut, scalePix=500, startYear=None, endYear=None)
     Calculates LAI and fpar at point OR mean within buffer of point if buf &gt; 0 OR mean within polygon if poly = 1
     
     Calculates all available years
@@ -14207,6 +14213,12 @@ GEElaiMODIS(ptsFile, metric, timeStep, buf, poly, QC, username, folderOut, scale
     Optional parameters
     
     scalePix - scale/spatial resolution. Default: 500
+    
+    startYear - The start of the time-series (year)
+    
+    endYear - The end of the time-series (year)
+    
+    If you don&#39;t specify the startYear and endYear the default is to download the entire time-series
 
 </pre>
 </div>
@@ -14265,9 +14277,9 @@ GEElaiMODIS(ptsFile, metric, timeStep, buf, poly, QC, username, folderOut, scale
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEEviMODIS in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEEviMODIS in module geedataextract.downloadData:
 
-GEEviMODIS(ptsFile, metric, timeStep, buf, poly, QC, username, folderOut, scalePix=250)
+GEEviMODIS(ptsFile, metric, timeStep, buf, poly, QC, username, folderOut, scalePix=250, startYear=None, endYear=None)
     Calculates NDVI or EVI at point OR mean within buffer of point if buf &gt; 0 OR mean within polygon if poly = 1
     Calculates all available years.
     
@@ -14276,7 +14288,7 @@ GEEviMODIS(ptsFile, metric, timeStep, buf, poly, QC, username, folderOut, scaleP
     ptsfile - file name of uploaded shapefile to GEE.
     
     metric - list of metrics to include: [&#39;NDVI&#39;, &#39;EVI&#39;]
-        &#39;NDVI&#39; = Normalized Difference Vegetation Index
+        &#39;NDVI&#39; = Normalized Difference Vegegation Index
         &#39;EVI&#39; = Enhanced Vegetation Index
     
     timeStep - time step for temporal averaging, either &#39;lowest&#39;,&#39;month&#39;, OR &#39;year&#39;
@@ -14297,6 +14309,12 @@ GEEviMODIS(ptsFile, metric, timeStep, buf, poly, QC, username, folderOut, scaleP
     Optional parameters
     
     scalePix - scale/spatial resolution. Default: 250
+    
+    startYear - The start of the time-series (year)
+    
+    endYear - The end of the time-series (year)
+    
+    If you don&#39;t specify the startYear and endYear the default is to download the entire time-series
 
 </pre>
 </div>
@@ -14356,9 +14374,9 @@ GEEviMODIS(ptsFile, metric, timeStep, buf, poly, QC, username, folderOut, scaleP
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEElstMODIS in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEElstMODIS in module geedataextract.downloadData:
 
-GEElstMODIS(ptsFile, metric, timeStep, buf, poly, QC, username, folderOut, scalePix=1000)
+GEElstMODIS(ptsFile, metric, timeStep, buf, poly, QC, username, folderOut, scalePix=1000, startYear=None, endYear=None)
     Calculates land surface temperature at point OR mean within buffer of point if buf &gt; 0 OR mean within polygon if poly = 1
     Calculates all available years
     
@@ -14389,6 +14407,12 @@ GEElstMODIS(ptsFile, metric, timeStep, buf, poly, QC, username, folderOut, scale
     Optional parameters
     
     scalePix - scale/spatial resolution. Default: 1000
+    
+    startYear - The start of the time-series (year)
+    
+    endYear - The end of the time-series (year)
+    
+    If you don&#39;t specify the startYear and endYear the default is to download the entire time-series
 
 </pre>
 </div>
@@ -14444,7 +14468,7 @@ GEElstMODIS(ptsFile, metric, timeStep, buf, poly, QC, username, folderOut, scale
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEEmonthTRMM in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEEmonthTRMM in module geedataextract.downloadData:
 
 GEEmonthTRMM(ptsFile, startYear, endYear, buf, poly, username, folderOut, scalePix=25000)
     Calculates global average precipitation rate (mm/hr) per month at point OR within buffer of point if buf &gt; 0 OR within polygon if poly = 1
@@ -14560,7 +14584,7 @@ GEEmonthTRMM(ptsFile, startYear, endYear, buf, poly, username, folderOut, scaleP
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEEnasaNEXGDDP in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEEnasaNEXGDDP in module geedataextract.downloadData:
 
 GEEnasaNEXGDDP(ptsFile, metric, timeStep, startYear, endYear, scenarios, buf, poly, username, folderOut, models=[&#39;ACCESS1-0&#39;, &#39;bcc-csm1-1&#39;, &#39;BNU-ESM&#39;, &#39;CanESM2&#39;, &#39;CCSM4&#39;, &#39;CESM1-BGC&#39;, &#39;CNRM-CM5&#39;, &#39;CSIRO-Mk3-6-0&#39;, &#39;GFDL-CM3&#39;, &#39;GFDL-ESM2G&#39;, &#39;GFDL-ESM2M&#39;, &#39;inmcm4&#39;, &#39;IPSL-CM5A-LR&#39;, &#39;IPSL-CM5A-MR&#39;, &#39;MIROC-ESM&#39;, &#39;MIROC-ESM-CHEM&#39;, &#39;MIROC5&#39;, &#39;MPI-ESM-LR&#39;, &#39;MPI-ESM-MR&#39;, &#39;MRI-CGCM3&#39;, &#39;NorESM1-M&#39;], scalePix=25000)
     Calculates future climate projections at point OR mean within buffer of point if buf &gt; 0 OR mean within polygon if poly = 1
@@ -14690,7 +14714,7 @@ NorESM1-M</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Help on function GEEmacaGCMs in module geedataextract.pullGEEvarPackage:
+<pre>Help on function GEEmacaGCMs in module geedataextract.downloadData:
 
 GEEmacaGCMs(ptsFile, metric, timeStep, startYear, endYear, scenarios, buf, poly, models, username, folderOut, scalePix=4000)
     Calculates MACA future climate projections at point OR mean within buffer of point if buf &gt; 0 OR mean within polygon if poly = 1
